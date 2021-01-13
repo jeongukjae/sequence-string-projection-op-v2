@@ -1,0 +1,18 @@
+# Flag to enable remote config. Required starting from TF 2.2.
+common --experimental_repo_remote_exec
+
+build -c opt
+build --cxxopt="-std=c++14"
+build --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0"
+build --auto_output_filter=subpackages
+build --copt="-Wall" --copt="-Wno-sign-compare"
+# build --linkopt="-lrt -lm"
+
+# Build TF with C++ 17 features.
+build:c++17 --cxxopt=-std=c++1z
+build:c++17 --cxxopt=-stdlib=libc++
+build:c++1z --config=c++17
+
+# Enable using platform specific build settings, except when cross-compiling for
+# mobile platforms.
+build --enable_platform_specific_config
