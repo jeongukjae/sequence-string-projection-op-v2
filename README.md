@@ -1,6 +1,6 @@
 # `sequence_string_projection_op_v2`
 
-This repository contains minimum source codes to build `sequence_string_projection_op_v2` for tensorflow 2.0 extracted from [`tensorflow/models/research/seq_flow_lite`](https://github.com/tensorflow/models/tree/master/research/seq_flow_lite). The code has been slightly modified so that it can be built on MacOS.
+This repository contains minimum source codes to build only `sequence_string_projection_op_v2` for tensorflow 2 extracted from [`tensorflow/models/research/seq_flow_lite`](https://github.com/tensorflow/models/tree/master/research/seq_flow_lite). The code has been slightly modified so that it can be built on MacOS.
 
 `sequence_string_projection_op_v2` is used in [PRADO](https://www.aclweb.org/anthology/D19-1506.pdf), [pQRNN](https://ai.googleblog.com/2020/09/advancing-nlp-with-efficient-projection.html) to replace the embedding table (tf.keras.layers.Embedding) by hashing input string sequences to ternary vector.
 
