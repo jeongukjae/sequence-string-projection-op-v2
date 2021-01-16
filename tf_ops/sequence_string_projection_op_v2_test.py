@@ -13,7 +13,7 @@ class SequenceStringProjectionV2Test(tf.test.TestCase):
                 vocabulary='abcdefghijklmnopqrstuvwxyz',
             )
 
-            with self.assertRaises(tf.python.framework.errors_impl.InvalidArgumentError):
+            with self.assertRaises(tf.errors.InvalidArgumentError):
                 # `input` must be a matrix, got shape: [2,8,1]
                 seq_proj.SequenceStringProjectionV2(
                     input=tf.reshape(tf.constant(["hello", "world", "147", "dog", "xyz", "abc", "efg", "hij", "quick", "hel1lo", "123", "jumped", "over", "the", "lazy", "dog"]), [2, 8, 1]),
@@ -21,7 +21,7 @@ class SequenceStringProjectionV2Test(tf.test.TestCase):
                     feature_size=16,
                 )
 
-            with self.assertRaises(tf.python.framework.errors_impl.InvalidArgumentError):
+            with self.assertRaises(tf.errors.InvalidArgumentError):
                 # `sequence_length` must be a vector, got shape: [3,1]
                 seq_proj.SequenceStringProjectionV2(
                     input=tf.reshape(tf.constant(["hello", "world", "147", "dog", "xyz", "abc", "efg", "hij", "quick", "hel1lo", "123", "jumped", "over", "the", "lazy", "dog"]), [2, 8]),
@@ -30,7 +30,7 @@ class SequenceStringProjectionV2Test(tf.test.TestCase):
                 )
 
 
-            with self.assertRaises(tf.python.framework.errors_impl.InvalidArgumentError):
+            with self.assertRaises(tf.errors.InvalidArgumentError):
                 # `sequence_length` should have batch size number of elements, got size 3, batch size is 2
                 seq_proj.SequenceStringProjectionV2(
                     input=tf.reshape(tf.constant(["hello", "world", "147", "dog", "xyz", "abc", "efg", "hij", "quick", "hel1lo", "123", "jumped", "over", "the", "lazy", "dog"]), [2, 8]),
@@ -38,7 +38,7 @@ class SequenceStringProjectionV2Test(tf.test.TestCase):
                     feature_size=16,
                 )
 
-            with self.assertRaises(tf.python.framework.errors_impl.InvalidArgumentError):
+            with self.assertRaises(tf.errors.InvalidArgumentError):
                 # `sequence_length` should have values less than or equal to max_seq_len
                 seq_proj.SequenceStringProjectionV2(
                     input=tf.reshape(tf.constant(["hello", "world", "147", "dog", "xyz", "abc", "efg", "hij", "quick", "hel1lo", "123", "jumped", "over", "the", "lazy", "dog"]), [2, 8]),
@@ -46,7 +46,7 @@ class SequenceStringProjectionV2Test(tf.test.TestCase):
                     feature_size=16,
                 )
 
-            with self.assertRaises(tf.python.framework.errors_impl.InvalidArgumentError):
+            with self.assertRaises(tf.errors.InvalidArgumentError):
                 # `sequence_length` should have values greater than or equal to 0
                 seq_proj.SequenceStringProjectionV2(
                     input=tf.reshape(tf.constant(["hello", "world", "147", "dog", "xyz", "abc", "efg", "hij", "quick", "hel1lo", "123", "jumped", "over", "the", "lazy", "dog"]), [2, 8]),
